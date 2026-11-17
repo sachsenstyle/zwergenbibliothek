@@ -1,0 +1,291 @@
+/* Zwergenbibliothek – Gestaltung. Farben stehen oben unter :root und lassen sich dort ändern. */
+
+@font-face { font-family: "Roboto"; src: url(schriften/roboto-400.woff2) format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Roboto"; src: url(schriften/roboto-400-i.woff2) format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Roboto Slab"; src: url(schriften/roboto-slab-400.woff2) format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Pacifico"; src: url(schriften/pacifico-400.woff2) format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+
+:root {
+  --hintergrund: #e1e3f9;
+  --dunkel: #262817;
+  --olive: #606038;
+  --olive-hell: #979558;
+  --beige: #d4cdaa;
+  --hover: #017e56;
+  --text: #2b2b2b;
+  --text-leise: #5a5a5a;
+  --linie: #ebebeb;
+  --karte: #ffffff;
+  --schrift: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --schrift-titel: "Roboto Slab", Georgia, "Times New Roman", serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--hintergrund);
+  color: var(--text);
+  font-family: var(--schrift);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--olive); }
+a:hover { color: var(--hover); }
+
+:focus-visible { outline: 3px solid var(--hover); outline-offset: 2px; }
+
+.sprung {
+  position: absolute; left: -999px; top: 0; background: #fff; color: #000; padding: .6rem 1rem; z-index: 100;
+}
+.sprung:focus { left: 1rem; top: 1rem; }
+
+/* ---------- Kopfbereich ---------- */
+.kopf {
+  position: relative;
+  background: #2a1d10 url(bilder/2025-07-cropped-chatgpt-image-14-juli-2025-10-53-52.webp) center / cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: clamp(2.5rem, 7vw, 4.5rem) 1rem clamp(2rem, 6vw, 3.5rem);
+}
+.kopf::before { content: ""; position: absolute; inset: 0; background: rgba(20, 12, 4, .28); }
+.kopf > * { position: relative; }
+.kopf-titel {
+  display: inline-block;
+  font-family: "Pacifico", cursive;
+  font-size: clamp(2.5rem, 8vw, 3.9rem);
+  line-height: 1.2;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .55);
+}
+.kopf-titel:hover { color: #fff; }
+.kopf-untertitel {
+  margin: .4rem 0 0;
+  font-size: clamp(1.05rem, 3vw, 1.45rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, .78);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, .6);
+}
+
+/* ---------- Menü ---------- */
+.menue { background: var(--dunkel); }
+.menue-innen { max-width: 1100px; margin: 0 auto; padding: 0 .5rem; }
+.menue-knopf {
+  display: none;
+  width: 100%;
+  background: none;
+  border: 0;
+  color: rgba(255, 255, 255, .75);
+  font: 700 1rem/1 var(--schrift);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 1.2rem 1rem;
+  cursor: pointer;
+}
+.menue-knopf:hover { color: #fff; }
+.menue-knopf .balken { display: inline-block; width: 1.3em; margin-right: .5em; vertical-align: -.1em; }
+.menue-knopf .balken i { display: block; height: 3px; background: currentColor; margin: 3px 0; border-radius: 1px; }
+
+.menue ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; }
+.menue a {
+  display: block;
+  padding: 1.1rem 1rem;
+  color: rgba(255, 255, 255, .62);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+.menue a:hover { color: #fff; }
+.menue a[aria-current="page"] { color: #fff; border-bottom-color: var(--olive-hell); }
+
+@media (max-width: 1020px) {
+  .js .menue-knopf { display: block; }
+  .js .menue ul { display: none; flex-direction: column; }
+  .js .menue.offen ul { display: flex; }
+  .js .menue li { border-top: 1px solid rgba(255, 255, 255, .08); }
+  .js .menue a { padding: 1rem; border-bottom: 0; border-left: 3px solid transparent; }
+  .js .menue a[aria-current="page"] { border-left-color: var(--olive-hell); }
+  .menue ul { justify-content: flex-start; }
+  .menue a { padding: .8rem 1rem; }
+}
+
+/* ---------- Inhaltskarte ---------- */
+.hauptteil { max-width: 1040px; margin: 2rem auto 3rem; padding: 0 1rem; }
+.karte { background: var(--karte); border-radius: 6px; box-shadow: 0 2px 14px rgba(40, 40, 90, .08); }
+
+.seitentitel { position: relative; padding: 2.2rem 2.5rem 1.6rem; border-bottom: 1px solid var(--linie); }
+.seitentitel::after {
+  content: "";
+  position: absolute; left: 2.6rem; bottom: -9px;
+  width: 16px; height: 16px;
+  background: var(--karte);
+  border-right: 1px solid var(--linie); border-bottom: 1px solid var(--linie);
+  transform: rotate(45deg);
+}
+.seitentitel h1 {
+  margin: 0;
+  font-family: var(--schrift-titel);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 4.2vw, 2.4rem);
+  line-height: 1.25;
+  color: var(--olive);
+}
+.seitentitel.gross h1 { color: #111; font-size: clamp(1.8rem, 4.6vw, 2.7rem); }
+
+.inhalt { padding: 2.4rem 2.5rem 2.8rem; overflow-wrap: anywhere; }
+.inhalt > :first-child { margin-top: 0; }
+.inhalt p { margin: 0 0 1.1rem; }
+.inhalt .lead { font-size: 1.2rem; color: #3a3a3a; }
+.inhalt h2 {
+  margin: 2.6rem 0 .8rem;
+  font-family: var(--schrift-titel);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+  line-height: 1.3;
+  color: #151515;
+}
+.inhalt h3 { margin: 1.8rem 0 .6rem; font-family: var(--schrift-titel); font-size: 1.25rem; color: var(--olive); }
+.inhalt ul, .inhalt ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
+.inhalt li { margin-bottom: .35rem; }
+.inhalt hr { border: 0; border-top: 1px solid var(--linie); margin: 2rem 0; }
+.inhalt blockquote { margin: 1.4rem 0; padding: .4rem 0 .4rem 1.2rem; border-left: 4px solid var(--beige); color: #444; font-style: italic; }
+.inhalt figure { margin: 1.6rem 0; }
+.inhalt figure img { border-radius: 6px; }
+.inhalt .klein { font-size: .92rem; color: var(--text-leise); }
+.inhalt .schluss { margin-top: 3rem; text-align: center; font-family: var(--schrift-titel); font-size: 1.15rem; color: var(--olive); }
+
+.button, .inhalt a.button {
+  display: inline-block;
+  background: var(--olive);
+  color: #fff;
+  padding: .75em 1.5em;
+  border: 0;
+  border-radius: 4px;
+  font: 700 1rem/1.3 var(--schrift);
+  text-decoration: none;
+  cursor: pointer;
+  margin: .3rem 0 1rem;
+}
+.button:hover, .inhalt a.button:hover { background: var(--hover); color: #fff; }
+
+/* ---------- Kacheln ---------- */
+.kacheln { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; margin: 1.2rem 0 .5rem; }
+.kachel {
+  display: flex; flex-direction: column;
+  background: #fbfaf4;
+  border: 1px solid #ece9d8;
+  border-radius: 8px;
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+a.kachel:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(60, 60, 30, .14); color: inherit; }
+.kachel img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #eee; }
+.kachel .buchbild { aspect-ratio: 1 / 1; }
+.kachel-text { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; flex: 1; }
+.kachel h3 { margin: 0 0 .4rem; font-family: var(--schrift-titel); font-size: 1.15rem; line-height: 1.3; color: var(--olive); }
+.kachel p { margin: 0 0 .8rem; font-size: .95rem; line-height: 1.55; color: var(--text-leise); }
+.kachel .mehr { margin-top: auto; font-size: .9rem; font-weight: 700; color: var(--olive); }
+a.kachel:hover .mehr { color: var(--hover); }
+.kacheln.eng { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.kacheln.eng h3 { font-size: 1.05rem; margin: 0; }
+.kacheln.eng .kachel-text { padding-bottom: 1.1rem; }
+
+/* ---------- Buch-Detailseite ---------- */
+.buch { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 2.4rem; align-items: start; }
+.buch-bild { position: sticky; top: 1rem; }
+.buch-bild img { width: 100%; border-radius: 8px; box-shadow: 0 6px 22px rgba(0, 0, 0, .18); }
+.buch-text > :first-child { margin-top: 0; }
+.zurueck { margin-top: 2.4rem; padding-top: 1.4rem; border-top: 1px solid var(--linie); }
+@media (max-width: 760px) {
+  .buch { grid-template-columns: 1fr; gap: 1.5rem; }
+  .buch-bild { position: static; max-width: 320px; margin: 0 auto; }
+}
+
+/* ---------- Über mich / Gastautoren ---------- */
+.portrait { float: right; width: min(260px, 40%); margin: .3rem 0 1rem 1.8rem; }
+.portrait img { width: 100%; border-radius: 8px; box-shadow: 0 4px 16px rgba(0, 0, 0, .15); }
+@media (max-width: 600px) { .portrait { float: none; width: 220px; margin: 0 auto 1.4rem; } }
+.inhalt::after { content: ""; display: block; clear: both; }
+
+.gast { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 2rem; align-items: center; margin-top: 1.4rem; }
+.gast img { border-radius: 8px; box-shadow: 0 4px 16px rgba(0, 0, 0, .15); }
+.gast h2 { margin-top: 0; }
+.trenner { text-align: center; color: var(--olive-hell); letter-spacing: .3em; margin: 1rem 0; }
+@media (max-width: 700px) { .gast { grid-template-columns: 1fr; } }
+
+/* ---------- Formular ---------- */
+.formular { max-width: 640px; }
+.formular label { display: block; font-weight: 700; margin: 0 0 1.1rem; }
+.formular .pflicht { font-weight: 400; color: var(--text-leise); font-size: .9rem; }
+.formular input, .formular textarea {
+  display: block; width: 100%; margin-top: .35rem;
+  padding: .75rem .9rem;
+  font: 400 1rem/1.5 var(--schrift);
+  color: var(--text);
+  background: #fff;
+  border: 1px solid #c9c9c0;
+  border-radius: 4px;
+}
+.formular input:focus, .formular textarea:focus { border-color: var(--olive); outline: 3px solid rgba(96, 96, 56, .25); outline-offset: 0; }
+.meldung { margin-top: 1rem; padding: 1rem 1.2rem; background: #f1f5e6; border-left: 4px solid var(--olive-hell); border-radius: 4px; }
+
+/* ---------- Quiz ---------- */
+.quiz { max-width: 720px; }
+.quiz-fortschritt { height: 8px; background: #ecebdd; border-radius: 4px; overflow: hidden; margin: 0 0 .5rem; }
+.quiz-fortschritt span { display: block; height: 100%; background: var(--olive-hell); transition: width .25s ease; }
+.quiz-zaehler { font-size: .9rem; color: var(--text-leise); margin: 0 0 1.4rem; }
+.quiz-frage { font-family: var(--schrift-titel); font-size: clamp(1.3rem, 3.4vw, 1.7rem); line-height: 1.35; margin: 0 0 1.2rem; color: #151515; }
+.quiz-antworten { list-style: none; margin: 0; padding: 0; display: grid; gap: .8rem; }
+.quiz-antwort {
+  display: block; width: 100%; text-align: left;
+  padding: 1rem 1.2rem;
+  font: 400 1.05rem/1.45 var(--schrift);
+  color: var(--text);
+  background: #fbfaf4;
+  border: 2px solid #e5e1cb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color .12s, background .12s;
+}
+.quiz-antwort:hover { border-color: var(--olive-hell); background: #f6f4e4; }
+.quiz-ergebnis h2 { margin-top: 0; }
+.quiz-liste { margin-top: 1.4rem; }
+.quiz-aktionen { display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: center; margin-top: 1.6rem; }
+.quiz-neu { background: none; border: 0; padding: 0; font: inherit; font-weight: 700; color: var(--olive); text-decoration: underline; cursor: pointer; }
+.quiz-neu:hover { color: var(--hover); }
+
+/* ---------- Fußbereich ---------- */
+.fuss { background: var(--dunkel); color: rgba(255, 255, 255, .62); text-align: center; padding: 2.2rem 1rem 2.6rem; font-size: .92rem; line-height: 1.8; }
+.fuss a { color: rgba(255, 255, 255, .85); text-decoration: none; margin: 0 .6rem; }
+.fuss a:hover { color: #fff; text-decoration: underline; }
+.fuss p { margin: 0; }
+.fuss .affiliate { margin-top: .6rem; font-size: .82rem; opacity: .8; }
+
+@media (max-width: 640px) {
+  .hauptteil { margin-top: 1.2rem; padding: 0 .75rem; }
+  .seitentitel { padding: 1.6rem 1.25rem 1.2rem; }
+  .seitentitel::after { left: 1.5rem; }
+  .inhalt { padding: 1.6rem 1.25rem 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+@media print {
+  .kopf, .menue, .fuss, .sprung { display: none; }
+  body { background: #fff; }
+  .karte { box-shadow: none; }
+}

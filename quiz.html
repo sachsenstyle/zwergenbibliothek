@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz-Seite – Zwergenbibliothek</title>
+<meta name="description" content="Welches Buch passt heute zu dir? Fünf kurze Fragen, ein Buchtipp aus der Zwergenbibliothek.">
+<meta property="og:title" content="Quiz-Seite – Zwergenbibliothek">
+<meta property="og:description" content="Welches Buch passt heute zu dir? Fünf kurze Fragen, ein Buchtipp aus der Zwergenbibliothek.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%9A%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.className += ' js';</script>
+</head>
+<body>
+<a class="sprung" href="#inhalt">Zum Inhalt springen</a>
+<header class="kopf">
+  <a class="kopf-titel" href="index.html">Zwergenbibliothek</a>
+  <p class="kopf-untertitel">Modern. Vielseitig. Selbst geschrieben.</p>
+</header>
+<nav class="menue" aria-label="Hauptmenü">
+  <div class="menue-innen">
+    <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="menueliste"><span class="balken" aria-hidden="true"><i></i><i></i><i></i></span>Menü</button>
+    <ul id="menueliste"><li><a href="index.html">Startseite</a></li><li><a href="ratgeber-arbeitsbuecher.html">Ratgeber &amp; Arbeitsbücher</a></li><li><a href="krimis-romane.html">Krimis &amp; Romane</a></li><li><a href="kinderbuecher-geschichten.html">Kinderbücher &amp; Geschichten</a></li><li><a href="notizbuecher-rezeptbuecher.html">Notizbücher &amp; Rezeptbücher</a></li><li><a href="gastautoren.html">Gastautoren /-innen</a></li><li><a href="kontakt.html">Kontakt</a></li><li><a href="ueber-mich.html">Über Mich</a></li><li><a href="quiz.html" aria-current="page">Quiz-Seite</a></li></ul>
+  </div>
+</nav>
+<main class="hauptteil" id="inhalt">
+  <div class="karte">
+    <div class="seitentitel"><h1>Welches Buch passt heute zu dir?</h1></div>
+    <div class="inhalt">
+<p class="lead">Fünf kurze Fragen – und die Zwergenbibliothek verrät dir, welches Buch gerade zu dir passt.</p>
+<div class="quiz" id="quiz" aria-live="polite">
+  <noscript><p class="meldung">Für das Quiz wird JavaScript benötigt. Du kannst stattdessen direkt in der Bibliothek stöbern: <a href="index.html">zur Startseite</a>.</p></noscript>
+</div>
+    </div>
+  </div>
+</main>
+<footer class="fuss">
+  <p><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="kontakt.html">Kontakt</a></p>
+  <p>© 2026 Zwergenbibliothek · Nivora Graufeder</p>
+  <p class="affiliate">Diese Seite enthält Affiliate-Links (Amazon-Partnerprogramm) – siehe Impressum.</p>
+</footer>
+<script>
+(function () {
+  var m = document.querySelector('.menue'), b = document.querySelector('.menue-knopf');
+  if (!m || !b) return;
+  b.addEventListener('click', function () {
+    var offen = m.classList.toggle('offen');
+    b.setAttribute('aria-expanded', offen ? 'true' : 'false');
+  });
+})();
+</script>
+<script>window.QUIZ_ERGEBNISSE = {"krimi": {"titel": "Dich zieht es zur Spannung", "text": "Du willst Spuren folgen, Widersprüche entdecken und am Ende wissen, was wirklich passiert ist. Ein Krimi mit viel Menschlichkeit und realistischer Polizeiarbeit passt gerade genau zu dir.", "buecher": [{"titel": "K17 – Erster Fall", "link": "buecher/k17-erster-fall.html", "cover": "bilder/2025-11-whatsapp-image-2025-11-17-at-11-40-53.webp"}], "mehr": {"label": "Alle Krimis & Romane ansehen", "link": "krimis-romane.html"}}, "ratgeber": {"titel": "Du willst etwas mitnehmen und ausprobieren", "text": "Du liest am liebsten Bücher, die dich weiterbringen: verständlich erklärt, mit klaren Schritten und Raum für eigene Gedanken. Diese Ratgeber und Arbeitsbücher sind ein guter Start.", "buecher": [{"titel": "Mein Weg in die Kreativität – Wie alles begann", "link": "buecher/mein-weg-in-die-kreativitat-wie-alles-begann.html", "cover": "bilder/2025-12-presentation-2.webp"}, {"titel": "KI als Partner – Das Affiliate-Arbeitsbuch", "link": "buecher/ki-als-partner-das-affiliate-arbeitsbuch.html", "cover": "bilder/2026-07-presentation.webp"}], "mehr": {"label": "Alle Ratgeber & Arbeitsbücher ansehen", "link": "ratgeber-arbeitsbuecher.html"}}, "kinder": {"titel": "Dir ist nach Zauber und Gemütlichkeit", "text": "Du magst Geschichten, die leise berühren, zum Vorlesen einladen und ein bisschen Magie in den Tag bringen – für Kinder und für alle, die sich ihre Erzählliebe bewahrt haben.", "buecher": [{"titel": "Willis Adventskalender – Ausmalen & Vorlesen im Advent", "link": "buecher/willis-adventskalender-ausmalen-vorlesen-im-advent.html", "cover": "bilder/2026-10-presentation-1.webp"}, {"titel": "Lena und Max: Hüter der Weihnachtsmagie", "link": "buecher/lena-und-max-huter-der-weihnachtsmagie.html", "cover": "bilder/2025-11-presentation-1.webp"}], "mehr": {"label": "Alle Kinderbücher & Geschichten ansehen", "link": "kinderbuecher-geschichten.html"}}, "notiz": {"titel": "Du hältst gern Eigenes fest", "text": "Gedanken, Ideen, Lieblingsrezepte: Du bist eher der Typ, der Dinge aufschreibt, sammelt und ausprobiert. Diese Bücher geben dir den Platz dafür.", "buecher": [{"titel": "Ideenimperium: Jeder Strich ein neuer Anfang", "link": "buecher/ideenimperium-jeder-strich-ein-neuer-anfang.html", "cover": "bilder/2026-06-presentation-1.webp"}, {"titel": "50 Kräuter und Gewürze – und alles, was man mit ihnen machen kann", "link": "buecher/50-krauter-und-gewurze-und-alles-was-man-mit-ihnen-machen-kann.html", "cover": "bilder/2026-10-presentation.webp"}, {"titel": "Notiert & Gewürzt – Mein persönliches Rezeptbuch", "link": "buecher/notiert-gewurzt-mein-personliches-rezeptbuch.html", "cover": "bilder/2025-07-cover-rezeptbuch.webp"}], "mehr": {"label": "Alle Notizbücher & Rezeptbücher ansehen", "link": "notizbuecher-rezeptbuecher.html"}}};</script>
+<script src="quiz.js"></script>
+</body>
+</html>

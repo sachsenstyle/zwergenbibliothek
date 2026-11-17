@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakt – Zwergenbibliothek</title>
+<meta name="description" content="Kontakt zur Zwergenbibliothek: Fragen, Feedback oder Buchanfragen.">
+<meta property="og:title" content="Kontakt – Zwergenbibliothek">
+<meta property="og:description" content="Kontakt zur Zwergenbibliothek: Fragen, Feedback oder Buchanfragen.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%9A%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.className += ' js';</script>
+</head>
+<body>
+<a class="sprung" href="#inhalt">Zum Inhalt springen</a>
+<header class="kopf">
+  <a class="kopf-titel" href="index.html">Zwergenbibliothek</a>
+  <p class="kopf-untertitel">Modern. Vielseitig. Selbst geschrieben.</p>
+</header>
+<nav class="menue" aria-label="Hauptmenü">
+  <div class="menue-innen">
+    <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="menueliste"><span class="balken" aria-hidden="true"><i></i><i></i><i></i></span>Menü</button>
+    <ul id="menueliste"><li><a href="index.html">Startseite</a></li><li><a href="ratgeber-arbeitsbuecher.html">Ratgeber &amp; Arbeitsbücher</a></li><li><a href="krimis-romane.html">Krimis &amp; Romane</a></li><li><a href="kinderbuecher-geschichten.html">Kinderbücher &amp; Geschichten</a></li><li><a href="notizbuecher-rezeptbuecher.html">Notizbücher &amp; Rezeptbücher</a></li><li><a href="gastautoren.html">Gastautoren /-innen</a></li><li><a href="kontakt.html" aria-current="page">Kontakt</a></li><li><a href="ueber-mich.html">Über Mich</a></li><li><a href="quiz.html">Quiz-Seite</a></li></ul>
+  </div>
+</nav>
+<main class="hauptteil" id="inhalt">
+  <div class="karte">
+    <div class="seitentitel"><h1>Kontakt</h1></div>
+    <div class="inhalt">
+<p class="lead">Ich freue mich darauf, von dir zu hören! Nutze einfach das Kontaktformular unten, um mir eine Nachricht zu schicken – ob Frage, Feedback oder Buchanfrage.</p>
+<h2>📬 Schreib mir direkt</h2>
+<form class="formular" id="kontaktformular">
+  <label for="k-name">Name <span class="pflicht">(erforderlich)</span>
+    <input id="k-name" type="text" autocomplete="name" required></label>
+  <label for="k-mail">E-Mail <span class="pflicht">(erforderlich)</span>
+    <input id="k-mail" type="email" autocomplete="email" required></label>
+  <label for="k-text">Nachricht
+    <textarea id="k-text" rows="7" required></textarea></label>
+  <button class="button" type="submit">Nachricht vorbereiten</button>
+  <p class="klein">Der Knopf öffnet dein E-Mail-Programm mit einer fertig ausgefüllten Nachricht an <strong>sachsenstyle@t-online.de</strong>, die du dort nur noch abschicken musst. Alternativ kannst du direkt an diese Adresse schreiben.</p>
+  <div class="meldung" id="k-hinweis" role="status" hidden>Dein E-Mail-Programm sollte sich jetzt geöffnet haben. Falls nicht, schreib mir bitte direkt an <a href="mailto:sachsenstyle@t-online.de">sachsenstyle@t-online.de</a>.</div>
+</form>
+<p class="klein">Hinweis: Die übermittelten Daten werden nur zur Bearbeitung deiner Anfrage verwendet. Weitere Informationen findest du in meiner <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+    </div>
+  </div>
+</main>
+<footer class="fuss">
+  <p><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="kontakt.html">Kontakt</a></p>
+  <p>© 2026 Zwergenbibliothek · Nivora Graufeder</p>
+  <p class="affiliate">Diese Seite enthält Affiliate-Links (Amazon-Partnerprogramm) – siehe Impressum.</p>
+</footer>
+<script>
+(function () {
+  var m = document.querySelector('.menue'), b = document.querySelector('.menue-knopf');
+  if (!m || !b) return;
+  b.addEventListener('click', function () {
+    var offen = m.classList.toggle('offen');
+    b.setAttribute('aria-expanded', offen ? 'true' : 'false');
+  });
+})();
+</script>
+<script>
+document.getElementById('kontaktformular').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var text = 'Name: ' + document.getElementById('k-name').value + '\n' +
+             'E-Mail: ' + document.getElementById('k-mail').value + '\n\n' +
+             document.getElementById('k-text').value;
+  document.getElementById('k-hinweis').hidden = false;
+  window.location.href = 'mailto:sachsenstyle@t-online.de?subject=' + encodeURIComponent('Nachricht über die Zwergenbibliothek') +
+                         '&body=' + encodeURIComponent(text);
+});
+</script>
+</body>
+</html>
