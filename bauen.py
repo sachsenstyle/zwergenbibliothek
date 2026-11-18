@@ -252,6 +252,7 @@ def baue_kategorien():
 # ---------------------------------------------------------------- Buch-Detailseiten
 KAUF_BESCHRIFTUNG = {
     "50-krauter-und-gewurze-und-alles-was-man-mit-ihnen-machen-kann": ["Taschenbuch bei Amazon", "Hartcover bei Amazon"],
+    "notiert-gewurzt-mein-personliches-rezeptbuch": ["Taschenbuch bei Amazon", "Hartcover bei Amazon"],
 }
 
 
