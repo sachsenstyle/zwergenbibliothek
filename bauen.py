@@ -250,14 +250,34 @@ def baue_kategorien():
 
 
 # ---------------------------------------------------------------- Buch-Detailseiten
+KAUF_BESCHRIFTUNG = {
+    "50-krauter-und-gewurze-und-alles-was-man-mit-ihnen-machen-kann": ["Taschenbuch bei Amazon", "Hartcover bei Amazon"],
+}
+
+
+def kauf_knoepfe(slug, text):
+    """Kauf-Knöpfe unter dem Cover: übernimmt die Links der Knöpfe aus dem Buchtext."""
+    links = re.findall(r'<a href="([^"]+)" class="button"', text)
+    namen = KAUF_BESCHRIFTUNG.get(slug, [])
+    html_knoepfe = []
+    for i, href in enumerate(links):
+        if i < len(namen):
+            name = namen[i]
+        else:
+            name = "Bei Amazon ansehen" if "amazon." in href else "Zum Buch"
+        html_knoepfe.append(f'<a class="button buch-kaufen" href="{href}" target="_blank" rel="noopener sponsored">{E(name)}</a>')
+    return "".join(html_knoepfe)
+
+
 def baue_buchseiten():
     for b in BUECHER:
         if not b["post"]:
             continue
         kat = KATEGORIEN[b["seite"]]
         text = lade_inhalt(b["slug"] + ".html") or ""
+        kauf = kauf_knoepfe(b["slug"], text)
         inhalt = f"""<article class="buch">
-  <div class="buch-bild"><img src="@ROOT@{lokal(b['cover'])}" alt="Buchcover: {E(b['titel'])}"></div>
+  <div class="buch-bild"><img src="@ROOT@{lokal(b['cover'])}" alt="Buchcover: {E(b['titel'])}">{kauf}</div>
   <div class="buch-text">
 {text}
   </div>
