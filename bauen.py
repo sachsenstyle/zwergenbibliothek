@@ -379,8 +379,6 @@ def datenschutz_anpassen(text):
         else:
             ergebnis.append(t)
     out = "".join(ergebnis)
-    out = out.replace("Der eigentliche Buchkauf",
-                      "Einige dieser Links laufen zunächst über einen Kurzlink-Dienst (TinyURL) und leiten dann zu Amazon weiter. Der eigentliche Buchkauf", 1)
     out = re.sub(r"Stand: \w+ \d{4}\.", "Stand: November 2026.", out)
     return out
 
